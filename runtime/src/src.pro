@@ -3,4 +3,6 @@ include(../runtime.pri)
 TEMPLATE = subdirs
 CONFIG += ordered
 
-SUBDIRS = app
+SUBDIRS = \
+    3rd-party/xlnt \
+    app
