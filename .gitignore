@@ -30,3 +30,23 @@
 *.exe
 *.out
 *.app
+
+# MSVC generated files
+*.exp
+*.ilk
+*.lib
+*.pdb
+
+# Qt
+*.qmake.stash
+*.pro.user
+*.pro.user.*
+moc_*.h
+moc_*.cpp
+qrc_*.cpp
+Makefile*
+*-build-*
+ui_*.h
+
+# runtime
+runtime/bin
