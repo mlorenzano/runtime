@@ -1,8 +1,11 @@
 include(../../../runtime.pri)
 
+TARGET = xlnt
 TEMPLATE = lib
 
-TARGET = xlnt
+DEFINES += XLNT_EXPORT
+
+isEmpty(PRECOMPILED_HEADER):PRECOMPILED_HEADER = $$IDE_SOURCE_TREE/src/pch/runtime_stl_pch.h
 
 INCLUDEPATH += \
     xlnt/include \
@@ -254,3 +257,9 @@ SOURCES += \
     xlnt/third-party/libstudxml/xml/details/expat/xmltok_ns.c \
     xlnt/third-party/libstudxml/xml/details/genx/char-props.c \
     xlnt/third-party/libstudxml/xml/details/genx/genx.c
+
+DISTFILES += \
+    xlnt.pri
+
+DESTDIR = $$PWD/bin
+DLLDESTDIR = $$PWD/bin
