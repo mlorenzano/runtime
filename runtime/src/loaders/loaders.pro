@@ -1,5 +1,7 @@
 include(../../runtime.pri)
 
+include(../3rdparty/xlnt/xlnt.pri)
+
 QT += core
 
 isEmpty(PRECOMPILED_HEADER):PRECOMPILED_HEADER = $$IDE_SOURCE_TREE/src/pch/runtime_stl_pch.h
