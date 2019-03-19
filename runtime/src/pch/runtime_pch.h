@@ -3,6 +3,8 @@
  * GCC >= 3.4 / VC to greatly speed the building of Qt Creator.
  */
 
+#include "runtime_stl_pch.h"
+
 #if defined __cplusplus
 #include <QtGlobal>
 
@@ -38,5 +40,4 @@
 #include <QEvent>
 #include <QDebug>
 
-#include <stdlib.h>
 #endif
