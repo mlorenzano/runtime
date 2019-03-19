@@ -23,7 +23,7 @@ MainWindow::MainWindow(QWidget *parent) :
                                                       "Runtime (*.xlsx *.xls *.csv)");
                 qDebug() << f;
                 ExcelLoader loader;
-                loader.load("");
+                loader.load(f.toStdString());
             });
 }
 
