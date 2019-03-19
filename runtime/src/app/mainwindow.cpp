@@ -7,13 +7,8 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    auto exit = new QAction(QStringLiteral("Exit"));
-    exit->setShortcut(QKeySequence::Quit);
-
-    auto file = new QMenu(QStringLiteral("File"));
-    file->addAction(exit);
-
-    ui->menubar->addMenu(file);
+    connect(this->ui->actionExit, &QAction::triggered,
+            this, [&](){ QApplication::quit(); });
 }
 
 MainWindow::~MainWindow()
