@@ -5,4 +5,5 @@ CONFIG += ordered
 
 SUBDIRS = \
     3rdparty \
+    loaders \
     app

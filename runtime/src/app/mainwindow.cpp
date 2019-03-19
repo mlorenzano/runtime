@@ -1,6 +1,8 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
+#include <ExcelLoader.hpp>
+
 #include <QFileDialog>
 #include <QStandardPaths>
 #include <QDebug>
@@ -20,6 +22,8 @@ MainWindow::MainWindow(QWidget *parent) :
                 auto f = QFileDialog::getOpenFileName(this, "Open File", l,
                                                       "Runtime (*.xlsx *.xls *.csv)");
                 qDebug() << f;
+                ExcelLoader loader;
+                loader.load("");
             });
 }
 
