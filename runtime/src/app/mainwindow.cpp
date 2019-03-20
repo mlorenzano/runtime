@@ -1,11 +1,10 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
-#include <ExcelLoader.hpp>
+#include <Loader.hpp>
 
 #include <QFileDialog>
 #include <QStandardPaths>
-#include <QDebug>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -26,8 +25,7 @@ MainWindow::MainWindow(QWidget *parent) :
                 if (f.isEmpty()) {
                     return;
                 }
-                ExcelLoader loader;
-                loader.load(f.toStdString());
+                Loader().load(f.toStdString());
             });
 }
 

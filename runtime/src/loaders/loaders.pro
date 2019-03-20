@@ -2,7 +2,7 @@ include(../../runtime.pri)
 
 include(../3rdparty/xlnt/xlnt.pri)
 
-QT += core
+QT -= core gui
 
 isEmpty(PRECOMPILED_HEADER):PRECOMPILED_HEADER = $$IDE_SOURCE_TREE/src/pch/runtime_stl_pch.h
 
@@ -17,7 +17,11 @@ DLLDESTDIR = $$PWD/bin
 
 HEADERS += \
     ILoader.hpp \
-    ExcelLoader.hpp
+    ExcelLoader.hpp \
+    CsvLoader.hpp \
+    Loader.hpp
 
 SOURCES += \
-    ExcelLoader.cpp
+    ExcelLoader.cpp \
+    CsvLoader.cpp \
+    Loader.cpp
