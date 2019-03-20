@@ -20,8 +20,7 @@ MainWindow::MainWindow(QWidget *parent) :
                 auto l = QStandardPaths::locate(QStandardPaths::DesktopLocation,
                                                 "");
                 auto f = QFileDialog::getOpenFileName(this, "Open File", l,
-                                                      "Runtime (*.xlsx *.xls "
-                                                      "*.csv)");
+                                                      "Runtime (*.xlsx *.csv)");
                 if (f.isEmpty()) {
                     return;
                 }
