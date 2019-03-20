@@ -8,8 +8,8 @@
 #include <QDebug>
 
 MainWindow::MainWindow(QWidget *parent) :
-                                          QMainWindow(parent),
-                                          ui(new Ui::MainWindow)
+    QMainWindow(parent),
+    ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
 
@@ -18,10 +18,14 @@ MainWindow::MainWindow(QWidget *parent) :
 
     connect(this->ui->actionOpen, &QAction::triggered,
             this, [&](){
-                auto l = QStandardPaths::locate(QStandardPaths::DesktopLocation, "");
+                auto l = QStandardPaths::locate(QStandardPaths::DesktopLocation,
+                                                "");
                 auto f = QFileDialog::getOpenFileName(this, "Open File", l,
-                                                      "Runtime (*.xlsx *.xls *.csv)");
-                qDebug() << f;
+                                                      "Runtime (*.xlsx *.xls "
+                                                      "*.csv)");
+                if (f.isEmpty()) {
+                    return;
+                }
                 ExcelLoader loader;
                 loader.load(f.toStdString());
             });

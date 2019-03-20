@@ -1,5 +1,6 @@
 # Prerequisites
 *.d
+runtime
 
 # Compiled Object files
 *.slo
@@ -8,6 +9,7 @@
 *.obj
 *.Debug
 *.Release
+*.so*
 
 # Precompiled Headers
 *.gch
