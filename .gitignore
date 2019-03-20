@@ -51,4 +51,5 @@ Makefile*
 ui_*.h
 
 # runtime
-runtime/bin
+*bin
+runtime/runtime/*
