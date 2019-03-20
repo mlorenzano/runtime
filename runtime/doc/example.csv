@@ -1,0 +1,136 @@
+"### DIGITAL INPUTS ###";"Default Value"
+"FC – X";1
+"FC + X";1
+"FC – Y";1
+"FC + Y";1
+"FC – Z";1
+"FC + Z";1
+"ENC A";0
+"ENC B";0
+"JOG X -";0
+"JOG X +";0
+"JOG Y -";0
+"JOG Y +";0
+"JOG Z -";0
+"JOG Z +";0
+"Start";0
+"Stop";1
+"Inverter ok";0
+"Cambio utens. Man.";0
+"Pinza cambio utens. Aperta";0
+"Presenza utensile";1
+"Orientamento mandrino";0
+"Input 22";0
+"Input 23";0
+"Pressostato";1
+"Input 25";0
+"Input 26";0
+"Input 27";0
+"Input 28";0
+"Input 29";0
+"Input 30";0
+"Input 31";0
+"Input 32";0
+"Input 33";0
+"Input 34";0
+"Input 35";0
+"Input 36";0
+"Input 37";0
+"Input 38";0
+"Input 39";0
+"Input 40";0
+"Input 41";0
+"Input 42";0
+"Input 43";0
+"Input 44";0
+"Input 45";0
+"Input 46";0
+"Input 47";0
+"Input 48";0
+;
+;
+"### DIGITAL OUTPUTS ###";
+"Output 1";
+"X +";
+"X -";
+"Y +";
+"Y -";
+"Z +";
+"Z -";
+"Output 8";
+"CNC run";
+"Inverter run";
+"Output 11";
+"Output 12";
+"Output 13";
+"Output 14";
+"Ciclo auto ON";
+"Lampada Stop";
+"Orientamento mandrino";
+"Reset";
+"Apertura pinza utensile";
+"Pulizia cono utensile";
+"Pressurizzazione utensile";
+"Output 22";
+"Output 23";
+"Output 24";
+"Output 25";
+"Output 26";
+"Output 27";
+"Output 28";
+"Output 29";
+"Output 30";
+"Output 31";
+"Output 32";
+"Output 33";
+"Output 34";
+"Output 35";
+"Output 36";
+"Output 37";
+"Output 38";
+"Output 39";
+"Output 40";
+"Output 41";
+"Output 42";
+"Output 43";
+"Output 44";
+"Output 45";
+"Output 46";
+"Output 47";
+"Output 48";
+;
+;
+;
+;
+;
+;
+"### ANALOGIC INPUTS ###";
+"Assorbimento mandrino";
+"Y";
+"Z";
+"U";
+"A";
+"B";
+"C";
+"D";
+;
+"### ANALOGIC OUTPUTS ###";
+"X";
+"Y";
+"Z";
+"Mandrino";
+"A";
+"B";
+"C";
+"D";
+;
+;
+"### ENCODERS ###";
+"X";
+"Y";
+"Z";
+"U";
+"A";
+"B";
+"C";
+"D";
