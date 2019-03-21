@@ -15,10 +15,18 @@ LIBS += -L$$IDE_LIBRARY_PATH
 
 SOURCES += \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    digitalresource.cpp \
+    analogresource.cpp \
+    encoderresource.cpp \
+    resources.cpp
 
 FORMS += \
     mainwindow.ui
 
 HEADERS += \
-    mainwindow.h
+    mainwindow.h \
+    digitalresource.h \
+    analogresource.h \
+    encoderresource.h \
+    resources.h
