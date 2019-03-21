@@ -2,6 +2,8 @@
 
 #include "ILoader.hpp"
 
+#include <vector>
+
 class CsvLoader : public ILoader
 {
 public:
@@ -14,4 +16,9 @@ public:
     CsvLoader &operator=(CsvLoader &&) = default;
 
     void load(std::string &&filename) const override;
+
+private:
+    std::string read(std::string &&filename) const;
+    std::vector<std::string> split(std::string content,
+                                   const std::string &delimiter) const;
 };
