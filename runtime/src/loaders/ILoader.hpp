@@ -13,5 +13,5 @@ public:
     ILoader &operator=(const ILoader &) = default;
     ILoader &operator=(ILoader &&) = default;
 
-    virtual void load(std::string &&filename) const = 0;
+    virtual void load(std::string &&filename) = 0;
 };

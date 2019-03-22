@@ -5,7 +5,7 @@
 
 #include <stdexcept>
 
-void Loader::load(std::string &&filename) const
+void Loader::load(std::string &&filename)
 {
     if (filename.find(".csv") != std::string::npos) {
         CsvLoader().load(std::move(filename));

@@ -12,7 +12,7 @@ enum _CELL_TYPE{
     CELL_TYPE_MAX
 };
 
-void ExcelLoader::load(std::string &&filename) const
+void ExcelLoader::load(std::string &&filename)
 {
     xlnt::workbook wb;
     wb.load(filename);
