@@ -1,6 +1,7 @@
 include(../../runtime.pri)
 
 include(../3rdparty/xlnt/xlnt.pri)
+include(../core/core.pri)
 
 QT -= core gui
 

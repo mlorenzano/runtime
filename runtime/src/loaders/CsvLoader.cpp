@@ -1,5 +1,7 @@
 #include "CsvLoader.hpp"
 
+#include <resources.h>
+
 #include <fstream>
 #include <iostream>
 #include <sstream>
@@ -10,6 +12,9 @@ void CsvLoader::load(std::string &&filename) const
     for (auto &item : tokens) {
         std::cerr << item << std::endl;
     }
+
+    decltype (auto) r = Resources::get_instance();
+    r.digital_inputs.emplace_back(DigitalResource("", true)); // NOTE: example
 }
 
 std::string CsvLoader::read(std::string &&filename) const
