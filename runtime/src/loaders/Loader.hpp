@@ -13,5 +13,5 @@ public:
     Loader &operator=(const Loader &) = default;
     Loader &operator=(Loader &&) = default;
 
-    void load(std::string &&filename) const override;
+    void load(std::string &&filename) override;
 };

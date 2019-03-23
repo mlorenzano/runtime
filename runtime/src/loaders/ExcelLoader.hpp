@@ -13,5 +13,5 @@ public:
     ExcelLoader &operator=(const ExcelLoader &) = default;
     ExcelLoader &operator=(ExcelLoader &&) = default;
 
-    void load(std::string &&filename) const override;
+    void load(std::string &&filename) override;
 };
