@@ -23,6 +23,7 @@ HEADERS += \
     Loader.hpp
 
 SOURCES += \
+    ILoader.cpp \
     ExcelLoader.cpp \
     CsvLoader.cpp \
     Loader.cpp

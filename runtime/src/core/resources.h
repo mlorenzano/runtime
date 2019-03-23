@@ -24,6 +24,8 @@ public:
     std::vector<AnalogResource> analog_outputs;
     std::vector<EncoderResource> encoders;
 
+    void clear();
+
 private:
     Resources() = default;
 

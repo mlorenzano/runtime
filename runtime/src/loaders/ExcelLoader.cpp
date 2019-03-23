@@ -1,72 +1,72 @@
 #include "ExcelLoader.hpp"
 #include <xlnt/xlnt.hpp>
-
-enum _CELL_TYPE{
-    CELL_TYPE_NO_VALUE       = 0,
-    CELL_TYPE_DIGITAL_INPUTS,
-    CELL_TYPE_DIGITAL_OUTPUTS,
-    CELL_TYPE_ANALOGIC_INPUTS,
-    CELL_TYPE_ANALOGIC_OUTPUTS,
-    CELL_TYPE_ENCODERS,
-
-    CELL_TYPE_MAX
-};
+#include <resources.h>
 
 void ExcelLoader::load(std::string &&filename)
 {
     xlnt::workbook wb;
     wb.load(filename);
     auto ws = wb.active_sheet();
-    auto cell_type = CELL_TYPE_NO_VALUE;
+    decltype (auto) r = Resources::get_instance();
 
-    std::clog << "Print rows content" << std::endl;
-    for (auto row : ws.rows(false)) {
-        for (auto cell : row) {
-            //Check cell type
-            if (cell.to_string().find("DIGITAL INPUTS") != std::string::npos) {
-                cell_type = CELL_TYPE_DIGITAL_INPUTS;
-                std::clog << cell.to_string() << std::endl;
-                break;
-            } else if (cell.to_string().find("DIGITAL OUTPUTS") != std::string::npos) {
-                cell_type = CELL_TYPE_DIGITAL_OUTPUTS;
-                std::clog << cell.to_string() << std::endl;
-                break;
-            } else if (cell.to_string().find("ANALOGIC INPUTS") != std::string::npos) {
-                cell_type = CELL_TYPE_ANALOGIC_INPUTS;
-                std::clog << cell.to_string() << std::endl;
-                break;
+    //Reset all old resources
+    r.clear();
 
-            } else if (cell.to_string().find("ANALOGIC OUTPUTS") != std::string::npos) {
-                cell_type = CELL_TYPE_ANALOGIC_OUTPUTS;
-                std::clog << cell.to_string() << std::endl;
-                break;
+    for (size_t i = 0; i < ws.rows(false).length(); i++) {
+        xlnt::cell_vector row = ws.rows(false).vector(i);
+        std::string item = row.front().to_string();
+        std::string value = row.back().to_string();
 
-            } else if (cell.to_string().find("ENCODERS") != std::string::npos) {
-                cell_type = CELL_TYPE_ENCODERS;
-                std::clog << cell.to_string() << std::endl;
-                break;
+        if (item.empty()) {
+            continue;
+        }
 
-            }
+        if (value.empty()) {
+            value = "0";
+        }
 
-            //Set resources vector: cell column index begins with 1
-            switch (cell_type) {
-            case CELL_TYPE_DIGITAL_INPUTS:
-            case CELL_TYPE_DIGITAL_OUTPUTS:
-            case CELL_TYPE_ANALOGIC_INPUTS:
-            case CELL_TYPE_ANALOGIC_OUTPUTS:
-            case CELL_TYPE_ENCODERS:
-                //Resource name
-                if (cell.column_index() == 1)
-                    std::clog << cell.to_string() << ": ";
-                //Default vale
-                else if (cell.column_index() == 2)
-                    std::clog << std::stof(cell.to_string()) << std::endl;
-                break;
-            default:
-                break;
-            }
+        //Setting cell type
+        if (is_tag(item)) {
+            update_state(item);
+            continue;
+        }
+
+        //Set resources vectors
+        switch (state) {
+        case Type::Uknown:
+            throw std::logic_error("why I'm here?");
+            break;
+
+        case Type::DigIn:
+            r.digital_inputs.emplace_back(std::move(item),
+                                           std::stoi(value));
+            break;
+
+        case Type::DigOut:
+            r.digital_outputs.emplace_back(std::move(item),
+                                           std::stoi(value));
+            break;
+
+        case Type::AnalogIn:
+            r.analog_inputs.emplace_back(std::move(item),
+                                           std::stoi(value));
+            break;
+
+        case Type::AnalogOut:
+            r.analog_outputs.emplace_back(std::move(item),
+                                           std::stoi(value));
+            break;
+
+        case Type::Encoders:
+            r.encoders.emplace_back(std::move(item),
+                                           std::stoi(value));
+            break;
         }
     }
-    std::clog << "Processing complete" << std::endl;
 
+    std::cerr << r.digital_inputs.size() << " digital inputs" << std::endl
+              << r.digital_outputs.size() << " digital outputs" << std::endl
+              << r.analog_inputs.size() << " analog inputs" << std::endl
+              << r.analog_outputs.size() << " analog outputs" << std::endl
+              << r.encoders.size() << " encoders";
 }

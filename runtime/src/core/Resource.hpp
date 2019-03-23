@@ -15,4 +15,5 @@ public:
     Resource &operator=(Resource &&) = default;
 
     std::string label;
+
 };

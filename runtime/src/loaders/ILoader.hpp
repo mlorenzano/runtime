@@ -14,4 +14,11 @@ public:
     ILoader &operator=(ILoader &&) = default;
 
     virtual void load(std::string &&filename) = 0;
+
+protected:
+    enum class Type { Uknown, DigIn, DigOut, AnalogIn, AnalogOut, Encoders };
+    Type state{Type::Uknown};
+
+    bool is_tag(const std::string &item) const;
+    void update_state(const std::string &item);
 };
