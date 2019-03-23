@@ -9,9 +9,6 @@ void ExcelLoader::load(std::string &&filename)
     auto ws = wb.active_sheet();
     decltype (auto) r = Resources::get_instance();
 
-    //Reset all old resources
-    r.clear();
-
     for (size_t i = 0; i < ws.rows(false).length(); i++) {
         xlnt::cell_vector row = ws.rows(false).vector(i);
         std::string item = row.front().to_string();
@@ -39,7 +36,7 @@ void ExcelLoader::load(std::string &&filename)
 
         case Type::DigIn:
             r.digital_inputs.emplace_back(std::move(item),
-                                           std::stoi(value));
+                                          std::stoi(value));
             break;
 
         case Type::DigOut:
@@ -49,17 +46,17 @@ void ExcelLoader::load(std::string &&filename)
 
         case Type::AnalogIn:
             r.analog_inputs.emplace_back(std::move(item),
-                                           std::stoi(value));
+                                         std::stoi(value));
             break;
 
         case Type::AnalogOut:
             r.analog_outputs.emplace_back(std::move(item),
-                                           std::stoi(value));
+                                          std::stoi(value));
             break;
 
         case Type::Encoders:
             r.encoders.emplace_back(std::move(item),
-                                           std::stoi(value));
+                                    std::stoi(value));
             break;
         }
     }
