@@ -6,7 +6,7 @@ include(../loaders/loaders.pri)
 
 isEmpty(PRECOMPILED_HEADER):PRECOMPILED_HEADER = $$IDE_SOURCE_TREE/src/pch/runtime_gui_pch.h
 
-QT += core gui
+QT += core gui quick
 
 DESTDIR = $$IDE_APP_PATH
 TEMPLATE = app
@@ -16,10 +16,10 @@ LIBS += -L$$IDE_LIBRARY_PATH
 
 SOURCES += \
     main.cpp \
-    mainwindow.cpp
+    MenuBar.cpp
 
-FORMS += \
-    mainwindow.ui
+RESOURCES += $$PWD/qml/qml.qrc \
+    images/images.qrc
 
 HEADERS += \
-    mainwindow.h
+    MenuBar.hpp

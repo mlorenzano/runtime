@@ -1,14 +1,22 @@
-#include <QApplication>
-#include <QStyleFactory>
-
-#include "mainwindow.h"
+#include <QGuiApplication>
+#include <QQmlApplicationEngine>
+#include <QQmlContext>
+#include "MenuBar.hpp"
 
 int main(int argc, char *argv[])
 {
-    QApplication a(argc, argv);
+    QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 
-    MainWindow w;
-    w.show();
+    QGuiApplication app(argc, argv);
 
-    return a.exec();
+    QQmlApplicationEngine engine;
+
+    MenuBar menu;
+    engine.rootContext()->setContextProperty("menu", &menu);
+
+    engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
+    if (engine.rootObjects().isEmpty())
+        return -1;
+
+    return app.exec();
 }

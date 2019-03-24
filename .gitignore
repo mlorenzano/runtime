@@ -1,6 +1,5 @@
 # Prerequisites
 *.d
-runtime
 
 # Compiled Object files
 *.slo
@@ -53,4 +52,4 @@ Makefile*
 ui_*.h
 
 # runtime
-runtime/bin
+runtime/runtime/bin
