@@ -5,4 +5,5 @@ void MenuBar::load(QString filename)
 {
     filename.remove(0, 8);
     Loader().load(filename.toStdString());
+    last_filename = filename;
 }

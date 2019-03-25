@@ -2,6 +2,7 @@
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
 #include "MenuBar.hpp"
+#include "DigitalInputsModel.hpp"
 
 int main(int argc, char *argv[])
 {
@@ -12,6 +13,9 @@ int main(int argc, char *argv[])
     QQmlApplicationEngine engine;
 
     MenuBar menu;
+    DigitalInputsModel di_model;
+
+    engine.rootContext()->setContextProperty("digital_inputs", &di_model);
     engine.rootContext()->setContextProperty("menu", &menu);
 
     engine.load(QUrl(QStringLiteral("qrc:/main.qml")));

@@ -8,6 +8,9 @@ class MenuBar : public QObject
     Q_OBJECT
 public:
     Q_INVOKABLE void load(QString filename);
+
+    QString last_filename;
+
 };
 
 #endif // MENUBAR_HPP

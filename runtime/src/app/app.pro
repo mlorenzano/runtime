@@ -16,10 +16,12 @@ LIBS += -L$$IDE_LIBRARY_PATH
 
 SOURCES += \
     main.cpp \
-    MenuBar.cpp
+    MenuBar.cpp \
+    DigitalInputsModel.cpp
 
 RESOURCES += $$PWD/qml/qml.qrc \
     images/images.qrc
 
 HEADERS += \
-    MenuBar.hpp
+    MenuBar.hpp \
+    DigitalInputsModel.hpp
