@@ -75,7 +75,7 @@ ApplicationWindow {
         }
     }
 
-    ListView {
+    contentData: ListView {
         model: digital_inputs
         spacing: 20
         width: parent.width
@@ -93,7 +93,7 @@ ApplicationWindow {
     FileDialog {
         id: file_dialog
         title: "Please choose a file"
-        folder: shortcuts.home
+        folder: shortcuts.desktop
         onAccepted: {
             menu.load(file_dialog.fileUrls)
             close()
