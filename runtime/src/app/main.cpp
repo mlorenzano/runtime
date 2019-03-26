@@ -2,8 +2,8 @@
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
 
-#include "MenuBar.hpp"
 #include "DigitalInputsModel.hpp"
+#include "MenuBar.hpp"
 
 int main(int argc, char *argv[])
 {
@@ -17,6 +17,8 @@ int main(int argc, char *argv[])
     engine.rootContext()->setContextProperty("menu", &menu);
 
     DigitalInputsModel di_model;
+    QObject::connect(&menu, &MenuBar::refresh_after_load,
+                     &di_model, &DigitalInputsModel::refresh);
     engine.rootContext()->setContextProperty("digital_inputs", &di_model);
 
     engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
@@ -24,5 +26,5 @@ int main(int argc, char *argv[])
         return -1;
     }
 
-    return app.exec();
+    return QGuiApplication::exec();
 }

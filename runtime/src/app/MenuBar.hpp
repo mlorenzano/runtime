@@ -17,6 +17,7 @@ public slots:
 
 signals:
     void filename_changed();
+    void refresh_after_load();
 
 private:
     QString last_filename;

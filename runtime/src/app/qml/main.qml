@@ -79,8 +79,7 @@ ApplicationWindow {
         model: digital_inputs
         spacing: 20
         width: parent.width
-        height: 200
-        anchors.top: menu_bar.bottom
+        height: parent.height
         delegate: Button {
             width: 50
             height: 50

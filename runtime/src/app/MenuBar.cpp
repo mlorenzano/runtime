@@ -1,4 +1,5 @@
 #include "MenuBar.hpp"
+
 #include <Loader.hpp>
 
 void MenuBar::load(QString filename)
@@ -7,6 +8,7 @@ void MenuBar::load(QString filename)
     Loader().load(filename.toStdString());
     last_filename = filename;
     emit filename_changed();
+    emit refresh_after_load();
 }
 
 QString MenuBar::get_filename() const noexcept

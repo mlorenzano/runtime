@@ -11,10 +11,8 @@ void CsvLoader::load(std::string &&filename)
     auto rows = split(read(std::move(filename)), "\r\n");
     decltype (auto) r = Resources::get_instance();
 
-    for (size_t i = 0; i < rows.size(); ++i) {
-        auto item = rows.at(i);
-
-        if (item.empty() || item.size() <= 1) {
+    for (const auto &item : rows) {
+         if (item.empty() || item.size() <= 1) {
             continue;
         }
 
