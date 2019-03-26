@@ -67,11 +67,11 @@ ApplicationWindow {
         }
     }
 
-    footer: Item {
-        id: status_bar
-        Label {
-            anchors.bottom: parent.bottom
-            //nome file
+    footer: Text {
+        text: menu.filename
+        font {
+            pixelSize: 15
+            bold: true
         }
     }
 
@@ -96,13 +96,10 @@ ApplicationWindow {
         title: "Please choose a file"
         folder: shortcuts.home
         onAccepted: {
-            console.log("You chose: " + file_dialog.fileUrls)
             menu.load(file_dialog.fileUrls)
             close()
         }
-        onRejected: {
-            console.log("Canceled")
-            close()
-        }
+
+        onRejected: close()
     }
 }
