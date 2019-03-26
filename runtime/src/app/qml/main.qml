@@ -63,7 +63,7 @@ ApplicationWindow {
                 fillMode: Image.PreserveAspectFit
             }
 
-            onClicked: close()
+            onClicked: Qt.quit()
         }
     }
 

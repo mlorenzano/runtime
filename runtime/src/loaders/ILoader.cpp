@@ -1,5 +1,9 @@
 #include "ILoader.hpp"
 
+#ifdef __linux__
+#include <stdexcept>
+#endif
+
 bool ILoader::is_tag(const std::string &item) const
 {
     return item.find("#") != std::string::npos;

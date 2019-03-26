@@ -19,8 +19,9 @@ SOURCES += \
     MenuBar.cpp \
     DigitalInputsModel.cpp
 
-RESOURCES += $$PWD/qml/qml.qrc \
-    images/images.qrc
+RESOURCES += \
+    $$PWD/qml/qml.qrc \
+    $$PWD/images/images.qrc
 
 HEADERS += \
     MenuBar.hpp \

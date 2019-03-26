@@ -4,4 +4,4 @@ TEMPLATE = subdirs
 CONFIG += ordered
 
 SUBDIRS = \
-	xlnt
+    xlnt
