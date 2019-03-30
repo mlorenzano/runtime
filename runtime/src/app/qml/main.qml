@@ -1,7 +1,8 @@
 import QtQuick 2.12
 import QtQuick.Window 2.12
-import QtQuick.Controls 2.5
 import QtQuick.Dialogs 1.0
+import QtQuick.Controls 1.4
+import QtQuick.Layouts 1.0
 
 ApplicationWindow {
     id: main_window
@@ -10,82 +11,70 @@ ApplicationWindow {
     height: 480
     title: "Runtime"
 
-    header: Item {
-        id: menu_bar
-        Button {
-            id: load_file
-            anchors {
-                left: parent.left
-                leftMargin: 10
+    toolBar: ToolBar {
+        RowLayout {
+            anchors.fill: parent
+            spacing: 2
+            ToolButton {
+                iconSource: "qrc:/load.png"
+                onClicked: file_dialog.open()
             }
-            width: 32
-            height: width
-            background: Rectangle {
-                color: "lightgray"
-                border {
-                    width: 1
-                    color: "black"
-                }
-                radius: 5
+            ToolButton {
+                iconSource: "qrc:/exit.png"
+                onClicked: Qt.quit()
             }
 
-            Image {
-                source: "qrc:/load.png"
-                opacity: parent.pressed ? 0.5 : 1
-                anchors.fill: parent
-                fillMode: Image.PreserveAspectFit
+            Item {
+                Layout.fillWidth: true
             }
-
-            onClicked: file_dialog.open()
-        }
-
-        Button {
-            id: exit
-            anchors {
-                left: load_file.right
-                leftMargin: 10
-            }
-            width: 32
-            height: width
-            background: Rectangle {
-                color: "lightgray"
-                border {
-                    width: 1
-                    color: "black"
-                }
-                radius: 5
-            }
-
-            Image {
-                source: "qrc:/exit.png"
-                opacity: parent.pressed ? 0.5 : 1
-                anchors.fill: parent
-                fillMode: Image.PreserveAspectFit
-            }
-
-            onClicked: Qt.quit()
         }
     }
 
-    footer: Text {
-        text: menu.filename
-        font {
-            pixelSize: 15
-            bold: true
-        }
-    }
-
-    ListView {
+    GridView {
         model: digital_inputs
-        spacing: 20
         width: parent.width
         height: parent.height
-        delegate: Button {
-            width: 50
-            height: 50
-            text: name
-            background: Rectangle {
+
+        anchors {
+            fill: parent
+            margins: 20
+        }
+
+        delegate: Item {
+            width: 100
+            height: width
+            Layout.fillWidth: true
+            Layout.fillHeight: true
+
+            Rectangle {
+                width: parent.width * 0.9
+                height: parent.height * 0.9
+                MouseArea {
+                    anchors.fill: parent
+                    onClicked: console.log("clicked" + index)
+                }
                 color: value ? "green" : "red"
+                Text {
+                    anchors.centerIn: parent
+                    text: name
+                }
+
+            }
+        }
+    }
+
+    statusBar: StatusBar {
+        RowLayout {
+            Label {
+                text: menu.filename
+                font {
+                    pixelSize: 15
+                    bold: true
+                }
+            }
+
+            Item {
+                Layout.fillWidth: true
             }
         }
     }
@@ -101,4 +90,8 @@ ApplicationWindow {
 
         onRejected: close()
     }
+
+
+
+
 }
