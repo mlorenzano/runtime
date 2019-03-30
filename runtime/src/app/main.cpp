@@ -8,6 +8,7 @@
 int main(int argc, char *argv[])
 {
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
+    QCoreApplication::setOrganizationName("Quality Craftsmans");
 
     QGuiApplication app(argc, argv);
 

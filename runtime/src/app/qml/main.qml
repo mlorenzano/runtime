@@ -90,8 +90,4 @@ ApplicationWindow {
 
         onRejected: close()
     }
-
-
-
-
 }
